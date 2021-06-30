@@ -10,7 +10,6 @@ namespace ProjektWzorce
     {
         static void Main(string[] args)
         {
-            Logger _logger = Logger.GetInstance();
 
             // ----------- CREATE CUSTOMERS ---------------
             Customer customer1 = new()
@@ -31,7 +30,14 @@ namespace ProjektWzorce
 
             // ------------- OPEL ASTRA --------------------
             CarFactory astraCarFactory = new AstraFactory();
-            IOpel opelAstra = astraCarFactory.CreateOpel("niebieski");       
+            IOpel opelAstra = astraCarFactory.CreateOpel("niebieski");
+
+            Console.WriteLine(opelAstra.GetPackageNames());
+            opelAstra.GetAccessories().ForEach(x =>Console.WriteLine(x.Name));
+            Console.WriteLine($"{opelAstra.GetPrice()} zł");
+
+            Console.WriteLine("\n");
+
             opelAstra = new PackageComfort(opelAstra);
             opelAstra = new PackageSport(opelAstra);
 

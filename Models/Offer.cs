@@ -38,12 +38,17 @@ namespace ProjektWzorce.Models
 
         public void Subscribe(Customer newObserver)
         {
-            observers.Add(newObserver);
+            if (!observers.Contains(newObserver)){
+                observers.Add(newObserver);
+            }      
         }
 
         public void Unsubscribe(Customer observerToRemove)
         {
-            observers.Remove(observerToRemove);
+            if (observers.Contains(observerToRemove))
+            {
+                observers.Remove(observerToRemove);
+            } 
         }      
     }   
 }
